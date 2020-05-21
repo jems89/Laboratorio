@@ -1,11 +1,48 @@
+/**Lea atentamente y resuelva:
+
+Una expendedora de combustibles con varias sucursales tiene un lote de registros con las ventas del mes de abril, cada registro tiene los siguientes datos:
+
+Nro. de Sucursal (del 1 al 15).
+Día de la venta.
+Tipo de día ("H" = hábil, "F" = fin de semana).
+Tipo de Combustible (1 = Premium, 2 = Súper, 3 = Gasoil).
+Precio por litro.
+Litros vendidos.
+Los registros se encuentran agrupados por Sucursal y el fin del lote se indica con Sucursal 0.
+
+Se pide determinar e informar:
+
+a) El promedio de recaudación para cada uno de los tres tipos de combustible en cada sucursal.
+
+b) La recaudación total acumulada discriminada para la primera y la última semana de el mes.
+
+c) La sucursal con mayor recaudación en los días hábiles.
+
+d) La recaudación máxima en fines de semana por cada tipo de combustible y en qué sucursal fue cada uno.
+
+---
+
+Más consignas:
+
+---
+
+e) La cantidad total de litros vendida para cada combustible.
+
+f) La mayor cantidad de litros vendida en una sola venta. Se desea conocer qué combustible fue vendido y en qué tipo de día.
+
+g) La sucursal con menor porcentaje en litros vendidos de Premium respecto del total de litros vendidos en cada */
+
+
+
 #include<iostream>
 #include<cstdlib>
 
 using namespace std;
 int main(){
-int sucursal,minp,porcentajeminimo,remax2,remax3,remax1,sufin1,sufin2,sufin3,maxre,sucmyre,promedio1,promedio2,promedio3,acns,ns,dia,combustible,precio ,litros;
+int sucursal,dia,minp,porcentajeminimo,sucmyre,promedio1,promedio2,promedio3,acns,ns,combustible ,litros;
+float precio,remax2,remax3,remax1,sufin1,sufin2,sufin3,maxre;
 int ac1,ac2,ac3,ac7,ac24,acdh,cn1,cn2,cn3,rf1,rf2,rf3,lvt,lvp;
-int recaud7,recaud24,alit1,alit2,alit3;
+float recaud7,recaud24; int alit1,alit2,alit3;
 int bre,bfc1,bfc2,bfc3,bmin,bs,r1,r2,r3,re,rec,rh,ml,tipc,tipd;
 char tipodedia;
  bre=0;
@@ -17,7 +54,9 @@ char tipodedia;
 lvt=0;alit1=0;alit2=0;alit3=0;
 
 cout<<"////////////////////////////INGRESE LOS DATOS DE LA ESTACIONES DE SERVICIO//////////////////////////////////////////"<<endl;
-cout<<"/////////////////////////INGRESE DIA DE LA VENTA DEL 1 / 7//////////////////////////////////////////////////////////"<<endl;
+cout<<"////////////////////////////INGRESE NUMERO DE SUCURSAL//////////////////////////////////////////////////////////////"<<endl;
+cin>>ns;
+cout<<"/////////////////////////NUMERO DEL  DIA //////////////////////////////////////////////////////////"<<endl;
 cin>>dia;
 cout<<"////////////////////////////TIPO DE DIA H(DIA HABIL) F(FIN DE SEMANA) //////////////////////////////////////////////"<<endl;
 cin>>tipodedia;
@@ -28,13 +67,12 @@ cin>>precio;
 cout<<"/////////////////////////////////////LITROS VENDIDOS///////////////////////////////////////////////////////////////"<<endl;
 cin>>litros;
 cout<<"/////////////////////////////////////***********************************///////////////////////////////////////////"<<endl;
-cout<<"////////////////////////////INGRESE NUMERO DE SUCURSAL//////////////////////////////////////////////////////////////"<<endl;
-cin>>ns;
+
 
 
 while(ns!=0){
 
- acns=ns;
+acns=ns;
 
 bs=0;
 recaud7=0;recaud24=0;ac1=0;ac2=0;ac3=0;ac7=0;ac24=0;acdh=0;cn1=0;cn2=0;cn3=0;rf1=0;rf2=0;rf3=0;lvp=0;
@@ -42,7 +80,7 @@ recaud7=0;recaud24=0;ac1=0;ac2=0;ac3=0;ac7=0;ac24=0;acdh=0;cn1=0;cn2=0;cn3=0;rf1
 
 
 
-while(ns==acns   ) {
+while(ns==acns) {
 
 
 
@@ -51,33 +89,40 @@ lvt+=litros;
 switch (combustible){
 case 1 :
 r1=litros*precio;
-ac1+=r1;
+ac1=+r1;
 cn1++;
-alit1+=litros;
-lvp+=litros;
+alit1=+litros;
+lvp=+litros;
 break;
 case 2 :
 r2=litros*precio;
-ac2+=r2;
+ac2=+r2;
 cn2++;
-alit2+=litros;
+alit2=+litros;
 break;
 case 3:
 r3=litros*precio;
-ac3+=r3;
+ac3=+r3;
 cn3++;
-alit3+=litros;
+alit3=+litros;
 break;
 }
+
+
+
+
+
+
+
 if(dia<=7){
 
 re=(r1+r2+r3);
-ac7+=re;}
+ac7=+re;}
 else{
-        if(dia>=24){rec=(r1+r2+r3);ac24+=rec;}
+        if(dia>=24){rec=(r1+r2+r3);ac24=+rec;}
 }
 
-if(tipodedia=='h'){rh=(r1+r2+r3); acdh+=rh;                  }else{ rf1+=r1; rf2+=r2; rf3+=r3;}
+if(tipodedia=='h'){rh=(r1+r2+r3); acdh=+rh;                  }else{ rf1=+r1; rf2=+r2; rf3=+r3;}
 
 if(bs==0) {ml=litros; tipc=combustible;tipd=(char)tipodedia; bs==1;}
 else{
@@ -85,9 +130,15 @@ else{
 if(litros>=ml ){ml=litros; tipc=combustible; tipd=(char)tipodedia;}
 }
 
+
+
+
+
+
 cout<<"////////////////////////////INGRESE LOS DATOS DE LA ESTACIONES DE SERVICIO//////////////////////////////////////////"<<endl;
-cout<<"////////////////////////////INGRESE LOS DATOS DE LA ESTACIONES DE SERVICIO//////////////////////////////////////////"<<endl;
-cout<<"/////////////////////////INGRESE DIA DE LA VENTA DEL 1 / 7//////////////////////////////////////////////////////////"<<endl;
+cout<<"////////////////////////////INGRESE NUMERO DE SUCURSAL//////////////////////////////////////////////////////////////"<<endl;
+cin>>ns;
+cout<<"/////////////////////////INGRESE NUMERO DEL  DIA DE VENTA//////////////////////////////////////////////////////////"<<endl;
 cin>>dia;
 cout<<"////////////////////////////TIPO DE DIA H(DIA HABIL) F(FIN DE SEMANA) //////////////////////////////////////////////"<<endl;
 cin>>tipodedia;
@@ -98,20 +149,21 @@ cin>>precio;
 cout<<"/////////////////////////////////////LITROS VENDIDOS///////////////////////////////////////////////////////////////"<<endl;
 cin>>litros;
 cout<<"/////////////////////////////////////***********************************///////////////////////////////////////////"<<endl;
-cout<<"////////////////////////////INGRESE NUMERO DE SUCURSAL//////////////////////////////////////////////////////////////"<<endl;
-cin>>ns;
+
 
 
 
 }
 
-
 promedio1=ac1/cn1;
 promedio2=ac2/cn2;
 promedio3=ac3/cn3;
 
-recaud7+=ac7;
-recaud24+=ac24;
+
+
+
+recaud7=+ac7;
+recaud24=+ac24;
 
 if(bre==0){maxre=acdh;sucmyre=ns; bre=1;} else{
 if(acdh>= maxre ) {maxre=acdh; sucmyre=ns; }
