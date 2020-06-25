@@ -15,7 +15,7 @@ int main()
 int  l, vectdados[6];
 char r,nombre[20],apellido[20],ganador[20];
 int op;
-c
+
 system("cls");
 cout<<"INGRESAR TU  NOMBRE"<<endl;
 cin.getline(nombre,20);

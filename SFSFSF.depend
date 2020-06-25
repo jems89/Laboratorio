@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1592871334 source:c:\users\usuario\documents\()tp integrador\sfsfsfsf\main.cpp
+	<iostream>
+	<clocale>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<ctype.h>
+	<cstring>
+	"FUNC.H"
+
+1593124883 c:\users\usuario\documents\()tp integrador\sfsfsfsf\func.h
+	<iostream>
+	<clocale>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<ctype.h>
+	<cstring>
+
