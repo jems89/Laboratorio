@@ -12,11 +12,15 @@ using namespace std;
 int main()
 
 {
-int  l, vectdados[6];
+int n, l, vectordedados[6],contadorderepeticiones[6];
+
+const int tam=6;
 char r,nombre[20],apellido[20],ganador[20];
 int op;
 
 system("cls");
+cout<<"MENU BORRADOR DE PRUEBAS "<<endl;
+
 cout<<"INGRESAR TU  NOMBRE"<<endl;
 cin.getline(nombre,20);
 
@@ -24,6 +28,8 @@ cout<<"INGRESA TU APELLIDO"<<endl;
 cin.getline(apellido,20);
 cout<<endl;
 cout<<"BIENVENIDO "<<nombre<<" "<<apellido<<" "<<endl;
+cout<<"PULSE CUALQUIER LETRA PARA CONTINUAR";
+cin.ignore();
 
 while(true){
 system("cls");
@@ -41,19 +47,31 @@ switch(op){
 case 1:
 
 cout<<" A TIRAR LOS DADOS !!"<<endl;
-      SEGUNDOMENU(),tirardados(vectdados),mostrardados(vectdados),puntos(vectdados,vpuntos,l);
-cout<<" S/N!!"<<endl;
+tirardados(vectordedados),mostrardados(vectordedados);
+ponercerouncontador(contadorderepeticiones),
+cargarcontador(contadorderepeticiones,vectordedados),
+n=funciondepuntaje(contadorderepeticiones);
+cout<<"LA PUNTACION OPTENIDA EN ESTA LANZAMIENTO ES : "<<n<<endl;
+cout<<endl;
+cout<<"QUIERE TIRAR TODOS LOS DADOS DE NUEVO? S/N  ";
 cin>>r;
 switch ( r){
-case 's' : cout<<"si"<<endl;
-system("pause");
-tirardados(vectdados);
-mostrardados(vectdados);
-puntos(vectdados,vpuntos,l);
+case  'S':
+case  's':cout<<" SI "<<endl;
+tirardados(vectordedados);
+mostrardados(vectordedados);
+ponercerouncontador(contadorderepeticiones);
+cargarcontador(contadorderepeticiones,vectordedados);
+n=funciondepuntaje(contadorderepeticiones);
 
+cout<<"LA PUNTACION OPTENIDA EN ESTA LANZAMIENTO ES : "<<n<<endl;
+system("pause");
     break;
-case 'n': cout<<"no"<<endl;
+case 'n': cout<<" NO "<<endl;
+cout<<"LA PUNTACION OPTENIDA EN ESTA LANZAMIENTO FUE : "<<n<<endl;
     system("pause");
+
+
     break;
 }
 
@@ -62,7 +80,7 @@ break;
   case 2:
 
     break;
-  case 3:cout<<"dada";
+  case 3:cout<<"dazczda";
     break;
   case 4:return 0;
     break;
@@ -74,3 +92,5 @@ break;
 
 return 0;
 }
+
+
